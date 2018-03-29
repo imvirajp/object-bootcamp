@@ -1,6 +1,6 @@
 package com.step.bootcamp;
 
-// Understands the enclosed shape with four corners, each at right angle
+// Understands the enclosed shape with four corners at right angle
 public class Rectangle {
     private final float length;
     private final float width;
