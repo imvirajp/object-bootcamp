@@ -1,4 +1,4 @@
-package com.step.bootcamp;
+package com.step.bootcamp.probability;
 
 import org.junit.Before;
 import org.junit.Test;

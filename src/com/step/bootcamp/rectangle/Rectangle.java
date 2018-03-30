@@ -1,4 +1,4 @@
-package com.step.bootcamp;
+package com.step.bootcamp.rectangle;
 
 // Understands the enclosed shape with four corners at right angle
 public class Rectangle {

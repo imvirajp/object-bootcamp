@@ -1,4 +1,4 @@
-package com.step.bootcamp;
+package com.step.bootcamp.rectangle;
 
 public class InvalidDimensionException extends Throwable {
     public InvalidDimensionException() {
