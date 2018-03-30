@@ -1,4 +1,4 @@
-package com.step.bootcamp.rectangle;
+package com.step.bootcamp.shape;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -24,7 +24,6 @@ public class Feet {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(value);
     }
 }
