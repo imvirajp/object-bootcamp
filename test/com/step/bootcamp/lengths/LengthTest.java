@@ -40,4 +40,11 @@ public class LengthTest {
         Length twelveInches = Length.inInches(12d);
         assertEquals(oneFoot, twelveInches);
     }
+
+    @Test
+    public void shouldGiveTrueForComparingTwoInchWithFiveCentimeter() {
+        Length twoInches = Length.inInches(2);
+        Length fiveCentimeter = Length.inCentimeter(5);
+        assertEquals(twoInches,fiveCentimeter);
+    }
 }
