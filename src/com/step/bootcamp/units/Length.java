@@ -1,22 +1,32 @@
-package com.step.bootcamp.lengths;
+package com.step.bootcamp.units;
 
 import java.util.Objects;
 
+// Understands to represent comparison of given units
+
 public class Length {
     private final double value;
-    private final Unit unit;
+    private final LengthUnit unit;
 
-    private Length(double value, Unit unit) {
+    private Length(double value, LengthUnit unit) {
         this.value = value;
         this.unit = unit;
     }
 
     public static Length inInches(double valueInInches) {
-        return new Length(valueInInches, Unit.INCH);
+        return new Length(valueInInches, LengthUnit.INCH);
     }
 
     public static Length inFeet(double valueInFeet) {
-        return new Length(valueInFeet, Unit.FEET);
+        return new Length(valueInFeet, LengthUnit.FEET);
+    }
+
+    public static Length inCentimeters(double value) {
+        return new Length(value, LengthUnit.CM);
+    }
+
+    public static Length inMillimeters(double value) {
+        return new Length(value, LengthUnit.MM);
     }
 
     @Override
@@ -30,7 +40,6 @@ public class Length {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(value, unit);
     }
 
@@ -40,9 +49,5 @@ public class Length {
                 "value=" + value +
                 ", unit=" + unit +
                 '}';
-    }
-
-    public static Length inCentimeter(double value) {
-        return new Length(value,Unit.CM);
     }
 }

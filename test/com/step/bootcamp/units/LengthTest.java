@@ -1,4 +1,4 @@
-package com.step.bootcamp.lengths;
+package com.step.bootcamp.units;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,7 +6,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-// Ensures length behaves correctly
+// Ensures Length behaves correctly
+
 public class LengthTest {
 
     private Length oneFoot;
@@ -44,7 +45,14 @@ public class LengthTest {
     @Test
     public void shouldGiveTrueForComparingTwoInchWithFiveCentimeter() {
         Length twoInches = Length.inInches(2);
-        Length fiveCentimeter = Length.inCentimeter(5);
+        Length fiveCentimeter = Length.inCentimeters(5);
         assertEquals(twoInches,fiveCentimeter);
+    }
+
+    @Test
+    public void shouldGiveTrueForComparingOneCentimeterWithTenMillimeter() {
+        Length oneCentimeter = Length.inCentimeters(1d);
+        Length tenMillimeter = Length.inMillimeters(10d);
+        assertEquals(oneCentimeter,tenMillimeter);
     }
 }
