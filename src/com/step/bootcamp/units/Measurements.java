@@ -65,7 +65,8 @@ public class Measurements {
 
     @Override
     public int hashCode() {
-        return Objects.hash(unit.toBaseUnit(value), unit);
+        return unit.hash(value);
+//        return Objects.hash(unit.toBaseUnit(value), unit);
     }
 
     @Override
@@ -74,5 +75,13 @@ public class Measurements {
                 "value=" + value +
                 ", unit=" + unit +
                 '}';
+    }
+
+    public Measurements add(Measurements other) throws IncompatibleUnitTypeException {
+        if (!unit.isSameType(other.unit)) throw new IncompatibleUnitTypeException();
+        double baseValue = getBaseUnit(this);
+        double otherBaseValue = getBaseUnit(other);
+        double result = unit.toGivenUnit(baseValue + otherBaseValue,this.unit);
+        return new Measurements(result,this.unit);
     }
 }

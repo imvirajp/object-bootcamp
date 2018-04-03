@@ -11,12 +11,22 @@ public class MeasurementsTest {
     private Measurements oneFoot;
     private Measurements oneGallon;
     private Measurements oneTonne;
+    private Measurements twoInches;
+    private Measurements fourInches;
+    private Measurements twelveInches;
+    private Measurements twentyFourInches;
+    private Measurements oneKilogram;
 
     @Before
     public void setUp() {
         oneFoot = Measurements.inFeet(1d);
         oneGallon = Measurements.inGallons(1d);
         oneTonne = Measurements.inTonnes(1d);
+        twoInches = Measurements.inInches(2d);
+        fourInches = Measurements.inInches(4d);
+        twelveInches = Measurements.inInches(12d);
+        twentyFourInches = Measurements.inInches(24d);
+        oneKilogram = Measurements.inKilograms(1d);
     }
 
     @Test
@@ -85,7 +95,41 @@ public class MeasurementsTest {
     @Test
     public void shouldThrowInvalidUnitComparisonExceptionForComparingOneKilogramWithOneInch() {
         Measurements oneInch = Measurements.inInches(1d);
-        Measurements oneKilogram = Measurements.inKilograms(1d);
-        assertNotEquals(oneInch,oneKilogram);
+        assertNotEquals(oneInch.hashCode(),oneKilogram.hashCode());
+        assertNotEquals(oneInch, oneKilogram);
+    }
+
+    @Test
+    public void shouldGiveFourInchesForAddingTwoInchAndTwoInch() throws IncompatibleUnitTypeException {
+        Measurements anotherTwoInches = Measurements.inInches(2d);
+        assertEquals(twoInches.add(anotherTwoInches), fourInches);
+    }
+
+    @Test
+    public void shouldNotGiveFourInchesForAddingTwoInchAndFourInch() throws IncompatibleUnitTypeException {
+        Measurements anotherFourInches = Measurements.inInches(4d);
+        Measurements unexpectedAddition = twoInches.add(fourInches);
+        assertNotEquals(unexpectedAddition.hashCode(), anotherFourInches.hashCode());
+        assertNotEquals(unexpectedAddition,anotherFourInches);
+    }
+
+    @Test
+    public void shouldGiveTwoFeetForAddingOneFeetAndTwelveInches() throws IncompatibleUnitTypeException {
+        Measurements twoFeet = Measurements.inFeet(2d);
+        Measurements expectedAddition = oneFoot.add(twelveInches);
+        assertEquals(expectedAddition.hashCode(), twentyFourInches.hashCode());
+        assertEquals(expectedAddition,twoFeet);
+    }
+
+    @Test
+    public void shouldGiveTwentyFourInchesForAddingTwelveInchesAndOneFeet() throws IncompatibleUnitTypeException {
+        Measurements expectedAddition = twelveInches.add(oneFoot);
+        assertEquals(expectedAddition.hashCode(), twentyFourInches.hashCode());
+        assertEquals(expectedAddition,twentyFourInches);
+    }
+
+    @Test(expected = IncompatibleUnitTypeException.class)
+    public void shouldThrowExceptionForAddingDifferentUnits() throws IncompatibleUnitTypeException {
+        twoInches.add(oneKilogram);
     }
 }
