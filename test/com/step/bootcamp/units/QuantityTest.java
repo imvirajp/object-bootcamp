@@ -12,9 +12,10 @@ public class QuantityTest {
 
     @Before
     public void setUp() {
-        hundredCelsius = Quantity.inCelsius(100d);
-        twoHundredTwelveFahrenheit = Quantity.inFahrenheit(212d);
+        hundredCelsius = Quantities.Temperature.inCelsius(100d);
+        twoHundredTwelveFahrenheit = Quantities.Temperature.inFahrenheit(212d);
     }
+
     @Test
     public void shouldGiveTwoHundredTwelveFahrenheitForHundredCelsius() {
         assertEquals(hundredCelsius, twoHundredTwelveFahrenheit);
@@ -22,8 +23,8 @@ public class QuantityTest {
 
     @Test
     public void shouldGiveThreeHundredNinetyTwoFahrenheitForTwoHundredCelsius() {
-        Quantity threeHundredNinetyTwoFahrenheit = Quantity.inFahrenheit(392d);
-        Quantity twoHundredCelsius = Quantity.inCelsius(200d);
+        Quantity threeHundredNinetyTwoFahrenheit = Quantities.Temperature.inFahrenheit(392d);
+        Quantity twoHundredCelsius = Quantities.Temperature.inCelsius(200d);
         assertEquals(twoHundredCelsius,threeHundredNinetyTwoFahrenheit);
     }
 }

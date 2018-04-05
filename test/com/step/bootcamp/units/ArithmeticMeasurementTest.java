@@ -21,100 +21,100 @@ public class ArithmeticMeasurementTest {
 
     @Before
     public void setUp() {
-        oneFoot = ArithmeticMeasurement.inFeet(1d);
-        oneGallon = ArithmeticMeasurement.inGallons(1d);
-        oneTonne = ArithmeticMeasurement.inTonnes(1d);
-        twoInches = ArithmeticMeasurement.inInches(2d);
-        fourInches = ArithmeticMeasurement.inInches(4d);
-        twelveInches = ArithmeticMeasurement.inInches(12d);
-        twentyFourInches = ArithmeticMeasurement.inInches(24d);
-        oneKilogram = ArithmeticMeasurement.inKilograms(1d);
-        threeInches = ArithmeticMeasurement.inInches(3d);
-        twoPointFiveCM = ArithmeticMeasurement.inCentimeters(2.5d);
+        oneFoot = Quantities.Length.inFeet(1d);
+        oneGallon = Quantities.Volume.inGallons(1d);
+        oneTonne = Quantities.Weight.inTonnes(1d);
+        twoInches = Quantities.Length.inInches(2d);
+        fourInches = Quantities.Length.inInches(4d);
+        twelveInches = Quantities.Length.inInches(12d);
+        twentyFourInches = Quantities.Length.inInches(24d);
+        oneKilogram = Quantities.Weight.inKilograms(1d);
+        threeInches = Quantities.Length.inInches(3d);
+        twoPointFiveCM = Quantities.Length.inCentimeters(2.5d);
     }
 
 
     @Test
     public void shouldGiveTrueForComparingOneFeetWithOneFeet() {
-        ArithmeticMeasurement expectedFoot = ArithmeticMeasurement.inFeet(1d);
-        ArithmeticMeasurement expectedInches = ArithmeticMeasurement.inInches(12d);
+        ArithmeticMeasurement expectedFoot = Quantities.Length.inFeet(1d);
+        ArithmeticMeasurement expectedInches = Quantities.Length.inInches(12d);
         assertEquals(oneFoot, expectedInches);
         assertEquals(oneFoot, expectedFoot);
     }
 
     @Test
     public void shouldGiveTrueForComparingZeroFeetWithZeroFeet() {
-        ArithmeticMeasurement zeroFoot = ArithmeticMeasurement.inFeet(0d);
-        ArithmeticMeasurement zeroInch = ArithmeticMeasurement.inInches(0d);
+        ArithmeticMeasurement zeroFoot = Quantities.Length.inFeet(0d);
+        ArithmeticMeasurement zeroInch = Quantities.Length.inInches(0d);
         assertEquals(zeroFoot, zeroInch);
     }
 
     @Test
     public void shouldGiveFalseForComparingOneFeetWithOneInch() {
-        ArithmeticMeasurement oneInch = ArithmeticMeasurement.inInches(1d);
+        ArithmeticMeasurement oneInch = Quantities.Length.inInches(1d);
         assertNotEquals(oneFoot, oneInch);
     }
 
     @Test
     public void shouldGiveTrueForComparingOneFeetWithTwelveInches() {
-        ArithmeticMeasurement twelveInches = ArithmeticMeasurement.inInches(12d);
+        ArithmeticMeasurement twelveInches = Quantities.Length.inInches(12d);
         assertEquals(oneFoot, twelveInches);
     }
 
     @Test
     public void shouldGiveTrueForComparingTwoInchWithFiveCentimeter() {
-        ArithmeticMeasurement twoInches = ArithmeticMeasurement.inInches(2);
-        ArithmeticMeasurement fiveCentimeter = ArithmeticMeasurement.inCentimeters(5);
+        ArithmeticMeasurement twoInches = Quantities.Length.inInches(2);
+        ArithmeticMeasurement fiveCentimeter = Quantities.Length.inCentimeters(5);
         assertEquals(twoInches,fiveCentimeter);
     }
 
     @Test
     public void shouldGiveTrueForComparingOneCentimeterWithTenMillimeter() {
-        ArithmeticMeasurement oneCentimeter = ArithmeticMeasurement.inCentimeters(1d);
-        ArithmeticMeasurement tenMillimeter = ArithmeticMeasurement.inMillimeters(10d);
+        ArithmeticMeasurement oneCentimeter = Quantities.Length.inCentimeters(1d);
+        ArithmeticMeasurement tenMillimeter = Quantities.Length.inMillimeters(10d);
         assertEquals(oneCentimeter,tenMillimeter);
     }
 
     @Test
     public void shouldGiveTrueFoComparingOneGallonToOneGallon() {
-        ArithmeticMeasurement anotherGallon = ArithmeticMeasurement.inGallons(1d);
+        ArithmeticMeasurement anotherGallon = Quantities.Volume.inGallons(1d);
         assertEquals(oneGallon,anotherGallon);
     }
 
     @Test
     public void shouldGiveTrueForComparingOneGallonWithThreePointSevenEightLiters() {
-        ArithmeticMeasurement threePointSevenEightLiters = ArithmeticMeasurement.inLiters(3.78d);
+        ArithmeticMeasurement threePointSevenEightLiters = Quantities.Volume.inLiters(3.78d);
         assertEquals(oneGallon,threePointSevenEightLiters);
     }
 
     @Test
     public void shouldGiveTrueFoComparingOneTonneToOneTonne() {
-        ArithmeticMeasurement anotherTonne = ArithmeticMeasurement.inTonnes(1d);
+        ArithmeticMeasurement anotherTonne = Quantities.Weight.inTonnes(1d);
         assertEquals(oneTonne,anotherTonne);
     }
 
     @Test
     public void shouldGiveTrueForComparingOneTonneWithThousandKilograms() {
-        ArithmeticMeasurement thousandKilograms = ArithmeticMeasurement.inKilograms(1000d);
+        ArithmeticMeasurement thousandKilograms = Quantities.Weight.inKilograms(1000d);
         assertEquals(oneTonne,thousandKilograms);
     }
 
     @Test
     public void shouldThrowInvalidUnitComparisonExceptionForComparingOneKilogramWithOneInch() {
-        ArithmeticMeasurement oneInch = ArithmeticMeasurement.inInches(1d);
+        ArithmeticMeasurement oneInch = Quantities.Length.inInches(1d);
         assertNotEquals(oneInch.hashCode(),oneKilogram.hashCode());
         assertNotEquals(oneInch, oneKilogram);
     }
 
     @Test
     public void shouldGiveFourInchesForAddingTwoInchAndTwoInch() throws IncompatibleUnitTypeException {
-        ArithmeticMeasurement anotherTwoInches = ArithmeticMeasurement.inInches(2d);
+        ArithmeticMeasurement anotherTwoInches = Quantities.Length.inInches(2d);
         assertEquals(twoInches.add(anotherTwoInches), fourInches);
     }
 
     @Test
     public void shouldNotGiveFourInchesForAddingTwoInchAndFourInch() throws IncompatibleUnitTypeException {
-        ArithmeticMeasurement fourKilograms = ArithmeticMeasurement.inKilograms(4d);
+        ArithmeticMeasurement fourKilograms = Quantities.Weight.inKilograms(4d);
         ArithmeticMeasurement unexpectedAddition = twoInches.add(fourInches);
         assertNotEquals(unexpectedAddition,fourKilograms);
         assertNotEquals(unexpectedAddition.hashCode(), fourKilograms.hashCode());
@@ -156,7 +156,7 @@ public class ArithmeticMeasurementTest {
 
     @Test
     public void shouldGiveThirteenInchesForAddingOneFootAndTwoPointFiveCM() throws IncompatibleUnitTypeException {
-        ArithmeticMeasurement thirteenInches = ArithmeticMeasurement.inInches(13d);
+        ArithmeticMeasurement thirteenInches = Quantities.Length.inInches(13d);
         ArithmeticMeasurement expectedAddition = oneFoot.add(twoPointFiveCM);
         assertEquals(expectedAddition,thirteenInches);
         assertEquals(expectedAddition.toUnit(INCH).hashCode(),thirteenInches.hashCode());
@@ -170,8 +170,8 @@ public class ArithmeticMeasurementTest {
 
     @Test
     public void shouldGiveFourPointSevenEightLitersForAddingOneGallonAndOneLiter() throws IncompatibleUnitTypeException {
-        ArithmeticMeasurement oneLiter = ArithmeticMeasurement.inLiters(1d);
-        ArithmeticMeasurement fourPointSevenEightLiters = ArithmeticMeasurement.inLiters(4.78d);
+        ArithmeticMeasurement oneLiter = Quantities.Volume.inLiters(1d);
+        ArithmeticMeasurement fourPointSevenEightLiters = Quantities.Volume.inLiters(4.78d);
         ArithmeticMeasurement expectedAddition = oneGallon.add(oneLiter).toUnit(LITER);
         assertEquals(expectedAddition,fourPointSevenEightLiters);
         assertEquals(expectedAddition.toString(),fourPointSevenEightLiters.toString());

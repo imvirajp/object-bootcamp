@@ -1,7 +1,5 @@
 package com.step.bootcamp.units;
 
-import static com.step.bootcamp.units.Unit.*;
-
 // Understands to represent comparison of given units
 
 public class Quantity {
@@ -43,13 +41,5 @@ public class Quantity {
                 "value=" + value +
                 ", unit=" + unit +
                 '}';
-    }
-
-    public static Quantity inCelsius(double value) {
-        return new Quantity(value, CELSIUS);
-    }
-
-    public static Quantity inFahrenheit(double value) {
-        return new Quantity(value, FAHRENHEIT);
     }
 }
